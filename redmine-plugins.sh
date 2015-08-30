@@ -1,4 +1,10 @@
 
+
+rsync -a /vargrant/plugins/ /vagrant/redmine-core/plugins/
+
+cd /vargrant/ && git submodule update
+
+
 echo  a_common_libs 1.1.5
 echo  advanced_roadmap_v2 2.4.2
 echo  clipboard_image_paste 1.10
