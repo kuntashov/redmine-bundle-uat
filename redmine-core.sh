@@ -1,7 +1,9 @@
-echo enable redmine core (current master)
+echo enable redmine core - current master
 
 cd /vagrant/
 git submodule update
+
+rsync -a /vagrant/configs/database.yml ./config/
 
 echo starting to bundle build
 
@@ -9,8 +11,6 @@ cd ./redmine-core
 
 bundle install
 bundle update
-
-cp /vagrant/config/database.yml ./config/
 
 echo provisioning db and others
 

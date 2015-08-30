@@ -34,24 +34,57 @@ install memcached memcached
 # install Redis redis-server
 # install RabbitMQ rabbitmq-server
 
+
+echo Installing additional library
+install imagemagick libmagickwand-dev
+
+
 install PostgreSQL postgresql postgresql-contrib libpq-dev
-#TODO - check if the role exist or database exist
-sudo -u postgres createuser --superuser redmine
 
-sudo -u postgres createdb -O redmine redmine-tests
-sudo -u postgres createdb -O redmine redmine-developer
+sudo -u postgres psql <<SQL
+DO
+$body$
+BEGIN
+   IF NOT EXISTS (
+      SELECT *
+      FROM   pg_catalog.pg_user
+      WHERE  usename = 'redmine') THEN
 
-#debconf-set-selections <<< 'mysql-server mysql-server/root_password password root'
-#debconf-set-selections <<< 'mysql-server mysql-server/root_password_again password root'
-#install MySQL mysql-server libmysqlclient-dev
-#mysql -uroot -proot <<SQL
-#CREATE USER 'rails'@'localhost';
-#CREATE DATABASE activerecord_unittest  DEFAULT CHARACTER SET utf8 DEFAULT COLLATE utf8_general_ci;
-#CREATE DATABASE activerecord_unittest2 DEFAULT CHARACTER SET utf8 DEFAULT COLLATE utf8_general_ci;
-#GRANT ALL PRIVILEGES ON activerecord_unittest.* to 'rails'@'localhost';
-#GRANT ALL PRIVILEGES ON activerecord_unittest2.* to 'rails'@'localhost';
-#GRANT ALL PRIVILEGES ON inexistent_activerecord_unittest.* to 'rails'@'localhost';
-#SQL
+      CREATE ROLE redmine LOGIN PASSWORD 'redmine';
+   END IF;
+END
+$body$
+
+
+DO
+$do$
+BEGIN
+
+IF EXISTS (SELECT 1 FROM pg_database WHERE datname = 'redmine-tests') THEN
+   RAISE NOTICE 'Database redmine-tests already exists'; 
+ELSE
+   PERFORM dblink_exec('dbname=' || current_database()  -- current db
+                     , 'CREATE DATABASE redmine-tests WITH ENCODING="UTF8" OWNER=redmine');
+END IF;
+
+END
+$do$
+
+DO
+$do$
+BEGIN
+
+IF EXISTS (SELECT 1 FROM pg_database WHERE datname = 'redmine-development') THEN
+   RAISE NOTICE 'Database redmine-tests already exists'; 
+ELSE
+   PERFORM dblink_exec('dbname=' || current_database()  -- current db
+                     , 'CREATE DATABASE redmine-development WITH ENCODING="UTF8" OWNER=redmine');
+END IF;
+
+END
+$do$
+
+SQL
 
 install 'Nokogiri dependencies' libxml2 libxml2-dev libxslt1-dev
 install 'ExecJS runtime' nodejs
