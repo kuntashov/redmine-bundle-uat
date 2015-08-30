@@ -11,5 +11,5 @@ Vagrant.configure('2') do |config|
   config.vm.provision :shell, path: 'redmine-core.sh', keep_color: true
   
   config.vm.provision :shell, path: 'redmine-plugins.sh', keep_color: true
-   
+ 
 end
