@@ -2,12 +2,17 @@
 
 ## en_US
 
+[current version 0.2](https://github.com/silverbulleters/redmine-bundle-uat/releases/tag/0.2)
+[сurrent work version - develop branch](https://github.com/silverbulleters/redmine-bundle-uat/tree/develop)
 
 ~~~
 TODO
 ~~~
 
 ## ru_RU
+
+[стабильная версия 0.2](https://github.com/silverbulleters/redmine-bundle-uat/releases/tag/0.2)
+[активно разрабатываемая версия - ветка develop](https://github.com/silverbulleters/redmine-bundle-uat/tree/develop)
 
 Так сложилось что на текущий момент существует множество плагинов и множество их авторов. Одновременно с этим существует команда ядра Redmine. 
 В целом можно сказать что обе эти команды преследуют разные цели - одна адаптирует Redmine для целей управления своими проектами, другая же последовательно и не торопясь повышает стабильность ядра 
@@ -16,6 +21,7 @@ TODO
 Использовать Redmine без плагинов - почти не принято и почти никогда не делается
 
 В связи с чем необходимо выполнять проверку и тестирование полного bundl'а (савокупного приложения и его настроек) - со всеми плагинами
+А также формирование стабильного пакета скриптов для установки плагинов в production через docker контейнер https://github.com/sameersbn/docker-redmine
 
 ### Установка
 
@@ -71,7 +77,12 @@ vagrant provision
 * запуск тестов
 
 ```
-vagrant provision && vagrant ssh -c "cd /vagrant/redmine-core/ && bundle exec rake test && phantomjs --webdriver 4444 && bundle exec rake test:ui"
+vagrant provision 
+vagrant ssh 
+cd /vagrant/redmine-core/ 
+bundle exec rake test -v 
+phantomjs --webdriver 4444 
+bundle exec rake test:ui -v
 ```
 
 ### Формирование файла поставки для production
