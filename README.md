@@ -77,7 +77,12 @@ vagrant provision
 * запуск тестов
 
 ```
-vagrant provision && vagrant ssh -c "cd /vagrant/redmine-core/ && bundle exec rake test && phantomjs --webdriver 4444 && bundle exec rake test:ui"
+vagrant provision 
+vagrant ssh 
+cd /vagrant/redmine-core/ 
+bundle exec rake test -v 
+phantomjs --webdriver 4444 
+bundle exec rake test:ui -v
 ```
 
 ### Формирование файла поставки для production
