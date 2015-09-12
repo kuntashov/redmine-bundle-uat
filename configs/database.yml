@@ -1,7 +1,7 @@
 
 development:
   adapter: postgresql
-  database: redmine_development
+  database: redmine_develop
   host: localhost
   username: redmine
   password: redmine

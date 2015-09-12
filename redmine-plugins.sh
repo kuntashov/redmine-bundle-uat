@@ -1,5 +1,12 @@
 
-echo  a_common_libs 1.1.5
+
+rsync -a /vagrant/plugins/ /vagrant/redmine-core/plugins/
+
+cd /vagrant/ && git submodule update
+
+echo  a_common_libs:latest
+
+echo "not applicable yet plugins"
 echo  advanced_roadmap_v2 2.4.2
 echo  clipboard_image_paste 1.10
 echo  custom_menu 1.5.0
