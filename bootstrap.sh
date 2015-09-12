@@ -41,50 +41,7 @@ install imagemagick libmagickwand-dev
 
 install PostgreSQL postgresql postgresql-contrib libpq-dev
 
-sudo -u postgres psql <<SQL
-DO
-$body$
-BEGIN
-   IF NOT EXISTS (
-      SELECT *
-      FROM   pg_catalog.pg_user
-      WHERE  usename = 'redmine') THEN
-
-      CREATE ROLE redmine LOGIN PASSWORD 'redmine';
-   END IF;
-END
-$body$
-
-
-DO
-$do$
-BEGIN
-
-IF EXISTS (SELECT 1 FROM pg_database WHERE datname = 'redmine-tests') THEN
-   RAISE NOTICE 'Database redmine-tests already exists'; 
-ELSE
-   PERFORM dblink_exec('dbname=' || current_database()  -- current db
-                     , 'CREATE DATABASE redmine-tests WITH ENCODING="UTF8" OWNER=redmine');
-END IF;
-
-END
-$do$
-
-DO
-$do$
-BEGIN
-
-IF EXISTS (SELECT 1 FROM pg_database WHERE datname = 'redmine-development') THEN
-   RAISE NOTICE 'Database redmine-tests already exists'; 
-ELSE
-   PERFORM dblink_exec('dbname=' || current_database()  -- current db
-                     , 'CREATE DATABASE redmine-development WITH ENCODING="UTF8" OWNER=redmine');
-END IF;
-
-END
-$do$
-
-SQL
+sudo -u postgres psql -f /vagrant/tools/db-prepare.sql
 
 install 'Nokogiri dependencies' libxml2 libxml2-dev libxslt1-dev
 install 'ExecJS runtime' nodejs

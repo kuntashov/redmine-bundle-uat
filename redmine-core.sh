@@ -3,7 +3,7 @@ echo enable redmine core - current master
 cd /vagrant/
 git submodule update
 
-rsync -a /vagrant/configs/database.yml ./config/
+rsync -a /vagrant/configs/database.yml ./redmine-core/config/
 
 echo starting to bundle build
 
@@ -15,7 +15,5 @@ bundle update
 echo provisioning db and others
 
 bundle exec rake generate_secret_token
-
-bundle exec rake db:migrate
 
 RAILS_ENV=development bundle exec rake db:migrate

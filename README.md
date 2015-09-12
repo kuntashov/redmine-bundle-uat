@@ -30,6 +30,21 @@ vagrant up
 
 ```
 
+### Обновление 
+
+* из исходников
+
+```
+git pull 
+vagrant provision 
+```
+
+* из репозитория образов
+
+~~~
+TODO
+~~~
+
 ### Отладка
 
 [Подключение RubyMine к отлаживаемому приложению](https://www.jetbrains.com/ruby/help/remote-debugging.html)
