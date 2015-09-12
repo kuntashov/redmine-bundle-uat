@@ -1,6 +1,5 @@
 
 
-rsync -a /vagrant/plugins/ /vagrant/redmine-core/plugins/
 
 cd /vagrant/ && git submodule update
 

@@ -5,8 +5,29 @@
 [current version 0.2](https://github.com/silverbulleters/redmine-bundle-uat/releases/tag/0.2)
 [сurrent work version - develop branch](https://github.com/silverbulleters/redmine-bundle-uat/tree/develop)
 
+In Redmine Community there is a redmine-core and its team, and many of plugins with there authors. And there is a problem - redmine core developer(s) need to check stablility of the core, but the plugins authors need to develop new feature as soon as possible.
+
+In REAL production where is NO Redmine without plugins. Thats why we need to tests plugins with redmine core.
+
+This project is created to ty solve this probleb.
+
+### Behavior on the first try:
+
+* install vagrant
+* git clone https://silverbulleters/redmine-bundle-uat,git
+* cd ./redmine-bundle-uat && vagrant up
+* vagrant ssh -c "/vagrant/tools/run-tests.sh"
+
+
+### Update vagrant box
+
+* git pull 
+* vagrant provision
+* vagrant ssh -c "/vagrant/tools/run-tests.sh"
+
+
 ~~~
-TODO
+TODO - add more EN docs
 ~~~
 
 ## ru_RU
@@ -65,7 +86,7 @@ TODO
 
 
 ```
-git submodule add <url> ./redmine-plugins/plugin-name
+git submodule add <url> ./redmine-plugins/<plugin-name>
 vagrant provision
 ```
 
@@ -78,11 +99,7 @@ vagrant provision
 
 ```
 vagrant provision 
-vagrant ssh 
-cd /vagrant/redmine-core/ 
-bundle exec rake test -v 
-phantomjs --webdriver 4444 
-bundle exec rake test:ui -v
+vagrant ssh -c "/vagrant/tools/run-tests.sh" 
 ```
 
 ### Формирование файла поставки для production
