@@ -65,10 +65,24 @@ vagrant provision
 
 #### Запуск тестов на совместимость
 
+Состоит из двух пунктов
+
+* обновление образа для тестирования
+* запуск тестов
 
 ```
-vagrant ssh -c "cd /vagrant/redmine-core/ && bundle exec rake test && phantomjs --webdriver 4444 && bundle exec rake test:ui"
+vagrant provision && vagrant ssh -c "cd /vagrant/redmine-core/ && bundle exec rake test && phantomjs --webdriver 4444 && bundle exec rake test:ui"
 ```
+
+### Формирование файла поставки для production
+
+* в качествет production образа используется docker образ https://github.com/sameersbn/docker-redmine
+* он использует установку плагинов через скрипты расширения
+
+~~~
+TODO - добавить скрипты для формирования файлов pre-install.sh, post-install.sh и init.sh для плагинов для образа docker
+~~~
+
 ~~~
 Заметки на полях:
 

@@ -13,6 +13,8 @@ BEGIN
 END
 $body$;
 
+ALTER USER redmine CREATEDB;
+
 DO
 $do$
 BEGIN
