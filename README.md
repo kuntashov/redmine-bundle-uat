@@ -2,8 +2,9 @@
 
 ## en_US
 
-[current version 0.2](https://github.com/silverbulleters/redmine-bundle-uat/releases/tag/0.2)
-[сurrent work version - develop branch](https://github.com/silverbulleters/redmine-bundle-uat/tree/develop)
+* [current version 0.2](https://github.com/silverbulleters/redmine-bundle-uat/releases/tag/0.2)
+
+* [сurrent work version - develop branch](https://github.com/silverbulleters/redmine-bundle-uat/tree/develop)
 
 In Redmine Community there is a redmine-core and its team, and many of plugins with there authors. And there is a problem - redmine core developer(s) need to check stablility of the core, but the plugins authors need to develop new feature as soon as possible.
 
@@ -32,8 +33,9 @@ TODO - add more EN docs
 
 ## ru_RU
 
-[стабильная версия 0.2](https://github.com/silverbulleters/redmine-bundle-uat/releases/tag/0.2)
-[активно разрабатываемая версия - ветка develop](https://github.com/silverbulleters/redmine-bundle-uat/tree/develop)
+* [стабильная версия 0.2](https://github.com/silverbulleters/redmine-bundle-uat/releases/tag/0.2)
+
+* [активно разрабатываемая версия - ветка develop](https://github.com/silverbulleters/redmine-bundle-uat/tree/develop)
 
 Так сложилось что на текущий момент существует множество плагинов и множество их авторов. Одновременно с этим существует команда ядра Redmine. 
 В целом можно сказать что обе эти команды преследуют разные цели - одна адаптирует Redmine для целей управления своими проектами, другая же последовательно и не торопясь повышает стабильность ядра 
