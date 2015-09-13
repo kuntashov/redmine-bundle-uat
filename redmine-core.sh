@@ -9,11 +9,11 @@ echo starting to bundle build
 
 cd ./redmine-core
 
-bundle install
-bundle update
+sudo -u vagrant bundle install
+sudo -u vagrant bundle update
 
 echo provisioning db and others
 
-bundle exec rake generate_secret_token
+sudo -u vagrant bundle exec rake generate_secret_token
 
-RAILS_ENV=development bundle exec rake db:migrate
+sudo -u vagrant bundle RAILS_ENV=development bundle exec rake db:migrate
