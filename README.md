@@ -15,7 +15,8 @@ This project is created to ty solve this probleb.
 ### Behavior on the first try:
 
 * install vagrant
-* git clone https://silverbulleters/redmine-bundle-uat,git
+* git clone https://silverbulleters/redmine-bundle-uat.git
+* cd redmine-bundle-uat && git submodule init && git submodule update
 * cd ./redmine-bundle-uat && vagrant up
 * vagrant ssh -c "/vagrant/tools/run-tests.sh"
 
