@@ -1,6 +1,8 @@
 # Redmine Bundle UAT - check the compatible of Redmine with plugins
 
 [![Join the chat at https://gitter.im/silverbulleters/redmine-bundle-uat](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/silverbulleters/redmine-bundle-uat?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+[![Build Status](http://ci.silverbulleters.org/buildStatus/icon?job=Redmine-Bundle-UAT)](http://ci.silverbulleters.org/job/Redmine-Bundle-UAT/)
+
 
 ## English
 
