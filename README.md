@@ -1,8 +1,8 @@
-# Redmine Bundle UAT - check the compatible of redmine with plugins
+# Redmine Bundle UAT - check the compatible of Redmine with plugins
 
 ## English
 
-* [current stable version 0.2](https://github.com/silverbulleters/redmine-bundle-uat/releases/tag/0.2)
+* [current stable version 0.2.1](https://github.com/silverbulleters/redmine-bundle-uat/releases/tag/0.2.1)
 * [сurrent work version - develop branch](https://github.com/silverbulleters/redmine-bundle-uat/tree/develop)
 
 In Redmine Community there is a redmine-core and its team, and many of plugins with there authors. And there is a problem - redmine core developer(s) need to check stablility of the core, but the plugins authors need to develop new feature as soon as possible.
@@ -21,7 +21,7 @@ Thats why we need to check and tests full bundle or Redmine (application + plugi
  cd redmine-bundle-uat
  ```
 
-if you what to be a active collobarator then switch to develop version
+if you what to be a active collaborator then switch to develop version
 
 ```Shell
 git checkout develop
@@ -47,7 +47,7 @@ vagrant ssh -c "/vagrant/tools/run-tests.sh"
 
 ### Update vagrant box
 
-if there is a change in the box, or new plugins there add to budle you need to be update the box
+if there is a change in the box, or new plugins there add to bundle you need to be update the box
 
 ```Shell
 cd redmine-bundle-uat
@@ -84,13 +84,13 @@ TODO - add generator for pre-install.sh, post-install.sh и init.sh for plugins 
 
 ### Notes
 
-* You may debug your Redmine througth remote debug [like this (RubyMine Jetbrains example)](https://www.jetbrains.com/ruby/help/remote-debugging.html)
+* You may debug your Redmine through remote debug [like this (RubyMine Jetbrains example)](https://www.jetbrains.com/ruby/help/remote-debugging.html)
 * Not all plugins use DCVS to hosting there code, thats why we nee script redmine-plugins.sh to get it from web
-* Some plugins ar comercial and need to be set in gitignore after wget from web
+* Some plugins ar commercial and need to be set in .gitignore after wget from web
 
 ## Русский
 
-* [стабильная версия 0.2](https://github.com/silverbulleters/redmine-bundle-uat/releases/tag/0.2)
+* [стабильная версия 0.2.1](https://github.com/silverbulleters/redmine-bundle-uat/releases/tag/0.2.1)
 * [активно разрабатываемая версия - ветка develop](https://github.com/silverbulleters/redmine-bundle-uat/tree/develop)
 
 Так сложилось что на текущий момент существует множество плагинов и множество их авторов. Одновременно с этим существует команда ядра Redmine.В целом можно сказать что обе эти команды преследуют разные цели - одна адаптирует Redmine для целей управления своими проектами, другая же последовательно и не торопясь повышает стабильность ядра 
