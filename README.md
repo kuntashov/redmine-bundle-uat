@@ -1,4 +1,4 @@
-# Redmine Bundle UAT - check the compatible of Redmine with plugins
+# Redmine Bundle UAT - test compatibility of Redmine and plugins
 
 [![Join the chat at https://gitter.im/silverbulleters/redmine-bundle-uat](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/silverbulleters/redmine-bundle-uat?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 [![Build Status](http://ci.silverbulleters.org/buildStatus/icon?job=Redmine-Bundle-UAT)](http://ci.silverbulleters.org/job/Redmine-Bundle-UAT/)
@@ -9,41 +9,41 @@
 * [current stable version 0.2.1](https://github.com/silverbulleters/redmine-bundle-uat/releases/tag/0.2.1)
 * [сurrent work version - develop branch](https://github.com/silverbulleters/redmine-bundle-uat/tree/develop)
 
-In Redmine Community there is a redmine-core and its team, and many of plugins with there authors. And there is a problem - redmine core developer(s) need to check stablility of the core, but the plugins authors need to develop new feature as soon as possible.
+In Redmine Community there is a redmine-core developed by its team, and many of third-party plugins developed by its authors. And these two group of developers have different goals. While plugins authors needs to develop new feauteres as soon as possible, Redmine core developers slow down development in order to get stable and safe core.
 
-In REAL production where is NO Redmine without plugins. Thats why we need to tests plugins with redmine core.
+In REAL production there is NO Redmine without plugins. Thats why we need to tests plugins with redmine core.
 
-Thats why we need to check and tests full bundle or Redmine (application + plugins + settings) and create starts script for docker composite application based on https://github.com/sameersbn/docker-redmine
+So we should check and test full bundle of Redmine (application + plugins + settings) and create start script for docker composite application based on https://github.com/sameersbn/docker-redmine
 
-### Behavior on the first try:
+### Installation
 
 * install vagrant from [official site](https://www.vagrantup.com/downloads.html)
-* clone the repo in your project directory
+* clone this repo in your project directory using following commands
 
 ```Shell
  git clone https://github.com/silverbulleters/redmine-bundle-uat.git
  cd redmine-bundle-uat
  ```
 
-if you what to be a active collaborator then switch to develop version
+When you want to contribute to the project you should switch to develop branch
 
 ```Shell
 git checkout develop
 ```
 
-now activate the bundle
+then activate the bundle
 
 ```Shell
 git submodule init && git submodule update
 ```
 
-and now you need to start your UAT box
+and then you need to start your UAT box
 
 ```Shell
 vagrant up
 ```
 
-and check what the tests is *green* and not fails
+and make sure then all tests passed and no tests failed
 
 ```Shell
 vagrant ssh -c "/vagrant/tools/run-tests.sh"
@@ -51,7 +51,7 @@ vagrant ssh -c "/vagrant/tools/run-tests.sh"
 
 ### Update vagrant box
 
-if there is a change in the box, or new plugins there add to bundle you need to be update the box
+If the box image was updated or new plugins were added to bundle then you need to update the box
 
 ```Shell
 cd redmine-bundle-uat
@@ -60,7 +60,7 @@ vagrant provision
 git submodule init && git submodule update
 ```
 
-And check the test like it described in first try
+And run tests like it described above
 
 ```Shell
 vagrant ssh -c "/vagrant/tools/run-tests.sh"
@@ -68,19 +68,19 @@ vagrant ssh -c "/vagrant/tools/run-tests.sh"
 
 ### Plugins testing
 
-### Add new plugin for tests
+### Add new plugin to test them
 
-plugins what you want to testing must add like git submodules, example command must look like this
+plugins that you want to test should be installed as git submodules, e.g. command should look like this
 
 ```Shell
 cd redmine-bundle-uat
 git submodule add <plugin-clone-url> ./plugins/<plugin-dir-like-it-register-in-init-file>
 ```
 
-### Create deploy scripts
+### Create deploying scripts
 
 * in production we use docker composite from https://github.com/sameersbn/docker-redmine
-* that project use scrip[t for install plugins
+* that project use script to install plugins
 
 ~~~
 TODO - add generator for pre-install.sh, post-install.sh и init.sh for plugins in docker
@@ -89,8 +89,8 @@ TODO - add generator for pre-install.sh, post-install.sh и init.sh for plugins 
 ### Notes
 
 * You may debug your Redmine through remote debug [like this (RubyMine Jetbrains example)](https://www.jetbrains.com/ruby/help/remote-debugging.html)
-* Not all plugins use DCVS to hosting there code, thats why we nee script redmine-plugins.sh to get it from web
-* Some plugins ar commercial and need to be set in .gitignore after wget from web
+* Not all plugins use DVCS for its code, that's why we need script redmine-plugins.sh to get it from web
+* Some plugins are commercial and need to be set in .gitignore after wget from web
 
 ## Русский
 
@@ -101,7 +101,7 @@ TODO - add generator for pre-install.sh, post-install.sh и init.sh for plugins 
 
 Отдельно стоит сказать, что при необходимости использовать Redmine в реальной работе (в production) пользователи всегда устанавливают плагины от сторонних разработчиков. Использовать Redmine без плагинов - почти не принято и почти никогда не делается
 
-В связи с чем необходимо выполнять проверку и тестирование полного bundl'а (савокупного приложения и его настроек) - со всеми плагинами. А также формирование стабильного пакета скриптов для установки плагинов в production через docker контейнер https://github.com/sameersbn/docker-redmine
+В связи с чем необходимо выполнять проверку и тестирование полного bundl'а (совокупного приложения и его настроек) - со всеми плагинами. А также формирование стабильного пакета скриптов для установки плагинов в production через docker контейнер https://github.com/sameersbn/docker-redmine
 
 ### Установка
 
@@ -119,7 +119,7 @@ TODO - add generator for pre-install.sh, post-install.sh и init.sh for plugins 
 git checkout develop
 ```
 
-теперь актвируем наше приложение с плагинами и необходимыми утилитами
+теперь активируем наше приложение с плагинами и необходимыми утилитами
 
 ```Shell
 git submodule init && git submodule update
@@ -158,7 +158,7 @@ vagrant ssh -c "/vagrant/tools/run-tests.sh"
 
 #### Добавление новых плагинов к тестированию
 
-плагины для тестирования добавлены в виде git подмодулейб для подключения используйте примерную команду
+плагины для тестирования добавлены в виде git подмодулей. Для подключения используйте примерную команду
 
 ```Shell
 cd redmine-bundle-uat
@@ -177,6 +177,6 @@ TODO - добавить скрипты для формирования файл�
 ### Заметки
 
 * Вы можете использовать удаленную отладку [по примеру продукта RubyMine от JetBrains)](https://www.jetbrains.com/ruby/help/remote-debugging.html)
-* не все плагины используют систему контроля версия для хранения своих релизов, поэтому необходимо скачивать плагины напрямую из Web
-* некоторые плагины являются коммерческии и необходимо добавить их в список игнорирования
+* не все плагины используют систему контроля версий для хранения своих релизов, поэтому необходимо скачивать плагины напрямую из Web
+* некоторые плагины являются коммерческими и необходимо добавить их в список игнорирования
 
